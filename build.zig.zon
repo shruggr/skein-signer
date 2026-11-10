@@ -1,13 +1,12 @@
 .{
     .name = .skein_signer,
-    .version = "0.1.0",
+    .version = "0.1.1",
     .minimum_zig_version = "0.16.0",
     .fingerprint = 0xd7ab9b3ab63c4783,
     .dependencies = .{
-        // skein-sdk branch `signer-client` (0.20.0 = `call-as` + lib/signer.zig), untagged: pinned by commit.
         .skein_sdk = .{
-            .url = "https://github.com/shruggr/skein-sdk/archive/eb4f88f2261dff899d57850734dc939da8d84456.tar.gz",
-            .hash = "skein_sdk-0.20.0-YroFBGc4HACEuIOmCs1eYaSpsjCKtFwEsaPX9fvH7XnW",
+            .url = "https://github.com/shruggr/skein-sdk/archive/refs/tags/v0.21.0.tar.gz",
+            .hash = "skein_sdk-0.21.0-YroFBOksHQDdS0GOaAtHHh58xBWEF6XW6yODsrxw-cHs",
         },
     },
     .paths = .{
