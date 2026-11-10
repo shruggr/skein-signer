@@ -52,3 +52,11 @@ A caller's manifest declares the names (`"calls": {"signer": ["1/amm pool", "2/s
 
     zig build test   the rule, the names, every call (natively, the raw signer mocked)
     zig build bin    bin/signer.wasm
+
+## End to end
+
+`test/e2e.ts` runs this app on a real kernel (shruggr/skein branch `call-permissions`): copy it into a skein
+checkout's `kernel-zig/equiv/` and run it with `SIGNER_APP=<this repo>` (`SKEIN_EQUIV_STORE=rocksdb|wasm` for the
+other stores). An installed instance and an image instance, a probe app approved for `1/amm pool` and
+`2/skein instance/self`: the approved names sign, an unapproved name is refused by the kernel, a request that is
+not its name's is refused by this app, the probe's own raw signer use is refused, both stores replay exactly.

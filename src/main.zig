@@ -109,7 +109,7 @@ pub fn serve(a: Allocator, in: Value, raw: Raw) !Value {
         error.BadFrame => "the request frame does not decode",
     });
     // Only the kernel writes the top-level `as` (a text); anything else is no name.
-    const as: ?[]const u8 = Value.str(in.get("as"));
+    const as: ?[]const u8 = sk.asName(in);
     var id: Identity = .{ .in = in, .raw = raw };
     switch (try decide(a, q, as, &id)) {
         .refuse => |msg| return refused(a, msg),
