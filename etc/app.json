@@ -1,0 +1,28 @@
+{
+  "kind": "app",
+  "name": "signer",
+  "version": "0.1.0",
+  "programs": {
+    "signer": "bin/signer.wasm"
+  },
+  "services": ["signer"],
+  "provides": [
+    {
+      "interface": "signer/1",
+      "functions": {
+        "wallet": {
+          "writes": false,
+          "args": {
+            "frame": "bytes"
+          },
+          "answer": {
+            "frame?": "bytes",
+            "error?": "string"
+          }
+        }
+      }
+    }
+  ],
+  "requires": [],
+  "description": "Who may sign what in this skein. Holds the kernel service `signer` (the raw signer import) and serves it to other apps' NAMED in-VM calls (fn wallet, {frame: <BRC-100 request frame, calls 8 and 11-16>} → {frame: <result frame>} | {error}). Level 0 is open; level 1 is served under `1/<protocol>`; level 2 under `2/<protocol>/<counterparty: self | anyone | 66-hex key>`; a caller approved for any name calls under `*`. The identity key needs no name. Privileged requests are refused. Nothing prompts. Only the kernel's checked name (the call input's `as`) counts."
+}

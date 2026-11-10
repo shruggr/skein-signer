@@ -1,0 +1,21 @@
+.{
+    .name = .skein_signer,
+    .version = "0.1.0",
+    .minimum_zig_version = "0.16.0",
+    .fingerprint = 0xd7ab9b3ab63c4783,
+    .dependencies = .{
+        // skein-sdk branch `signer-client` (from v0.19.0; lib/signer.zig), not yet tagged or pushed:
+        // a local path until it is, then the tag's URL and hash as skein-messagebox pins it.
+        .skein_sdk = .{
+            .path = "../wt-sdk-signer-client",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "bin",
+        "etc",
+        "README.md",
+    },
+}
